@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LÍMITE | Visualización Arquitectónica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #050505;
+            color: #f3f3f3;
+            overflow-x: hidden;
+        }
+        
+        /* Smooth reveal animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Image Hover Scale Effect */
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="text-2xl tracking-[0.5em] font-light animate-pulse">LÍMITE</div>
+    </div>
+
+    <!-- Navigation Overlay (Hidden by default) -->
+    <div id="nav-overlay" class="fixed inset-0 bg-black/95 z-40 transform translate-x-full transition-transform duration-500 flex flex-col justify-center items-center">
+        <ul class="text-center space-y-8">
+            <li><a href="#home" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">INICIO</a></li>
+            <li><a href="#work" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">TRABAJOS</a></li>
+            <li><a href="#studio" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">ESTUDIO</a></li>
+            <li><a href="#contact" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">CONTACTO</a></li>
+        </ul>
+        <div class="absolute bottom-10 text-xs text-gray-500 tracking-widest">
+            © 2024 LÍMITE STUDIO
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full top-0 z-50 px-6 py-6 md:px-12 md:py-8 flex justify-between items-center mix-blend-difference text-white">
+        <a href="#" class="text-xl md:text-2xl font-bold tracking-[0.3em] uppercase z-50">Límite</a>
+        
+        <button onclick="toggleMenu()" class="group z-50 flex flex-col items-end gap-1.5 cursor-pointer focus:outline-none">
+            <span id="burger-1" class="block w-8 h-[2px] bg-white transition-transform duration-300"></span>
+            <span id="burger-2" class="block w-5 group-hover:w-8 h-[2px] bg-white transition-all duration-300"></span>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative w-full h-screen overflow-hidden flex items-center justify-center">
+        <!-- Background Video/Image Placeholder -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop" 
+                 alt="Modern Architecture" 
+                 class="w-full h-full object-cover opacity-60 animate-[pulse_10s_ease-in-out_infinite]">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4">
+            <p class="reveal text-sm md:text-base tracking-[0.4em] mb-4 text-gray-300 uppercase">Estudio de Visualización</p>
+            <h1 class="reveal text-5xl md:text-7xl lg:text-9xl font-light tracking-tighter text-white mb-6">
+                REALIDAD <br> <span class="font-serif italic text-gray-400">REIMAGINADA</span>
+            </h1>
+            <div class="reveal mt-8">
+                <a href="#work" class="inline-block border border-white/30 px-8 py-3 text-xs tracking-[0.2em] hover:bg-white hover:text-black transition duration-500">
+                    DESCUBRIR PROYECTOS
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="arrow-down" class="text-white w-6 h-6 opacity-50"></i>
+        </div>
+    </section>
+
+    <!-- Introduction Text -->
+    <section class="py-24 md:py-40 px-6 md:px-20 bg-[#050505]">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-2xl md:text-4xl font-light leading-relaxed text-gray-200">
+                Creamos narrativas visuales para el entorno construido. 
+                Fusionamos arte y tecnología para mostrar lo que 
+                <span class="font-serif italic text-white">aún no existe</span>.
+            </h2>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid (The "Boundary" Style - Full Bleed or Tight Grid) -->
+    <section id="work" class="w-full bg-black">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0.5 bg-black">
+            
+            <!-- Project 1 -->
+            <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1600&auto=format&fit=crop" 
+                     alt="Project NYC" 
+                     class="project-img w-full h-full object-cover transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 mix-blend-difference">
+                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">RESIDENCIAL</p>
+                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">TORRE AZURE</h3>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
+                <img src="https://images.unsplash.com/photo-1512958789358-4dac0f368d37?q=80&w=1600&auto=format&fit=crop" 
+                     alt="Project Dubai" 
+                     class="project-img w-full h-full object-cover transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 mix-blend-difference">
+                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">COMERCIAL</p>
+                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">THE VOYAGER</h3>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" 
+                     alt="Project London" 
+                     class="project-img w-full h-full object-cover transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 mix-blend-difference">
+                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">INTERIORISMO</p>
+                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">LOFT 104</h3>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
+                <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1600&auto=format&fit=crop" 
+                     alt="Project Tokyo" 
+                     class="project-img w-full h-full object-cover transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 mix-blend-difference">
+                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">CULTURAL</p>
+                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">MUSEO NARA</h3>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="py-16 text-center bg-[#0a0a0a]">
+            <a href="#" class="inline-flex items-center gap-2 text-sm tracking-[0.2em] border-b border-transparent hover:border-white pb-1 transition">
+                VER TODOS LOS PROYECTOS <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services / Studio Section -->
+    <section id="studio" class="py-24 px-6 md:px-12 bg-[#080808] text-gray-200">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="md:col-span-4 reveal">
+                <h2 class="text-4xl font-light mb-6">EL ESTUDIO</h2>
+                <div class="w-12 h-[1px] bg-white mb-6"></div>
+                <p class="text-sm leading-7 text-gray-400">
+                    Fundado en 2014, LÍMITE ha establecido una reputación internacional por su excelencia en imágenes generadas por computadora (CGI). Trabajamos con los arquitectos y desarrolladores más prestigiosos del mundo.
+                </p>
+            </div>
+            
+            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8 reveal">
+                <!-- Service 1 -->
+                <div class="p-6 border border-white/5 hover:border-white/20 transition duration-500">
+                    <i data-lucide="monitor" class="w-8 h-8 mb-4 text-gray-300"></i>
+                    <h4 class="text-lg tracking-widest mb-3">IMAGEN ESTÁTICA</h4>
+                    <p class="text-sm text-gray-500">Fotorrealismo de alto impacto para marketing y concursos de arquitectura.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="p-6 border border-white/5 hover:border-white/20 transition duration-500">
+                    <i data-lucide="film" class="w-8 h-8 mb-4 text-gray-300"></i>
+                    <h4 class="text-lg tracking-widest mb-3">ANIMACIÓN</h4>
+                    <p class="text-sm text-gray-500">Narrativas cinematográficas que cuentan la historia del espacio y la luz.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="p-6 border border-white/5 hover:border-white/20 transition duration-500">
+                    <i data-lucide="glasses" class="w-8 h-8 mb-4 text-gray-300"></i>
+                    <h4 class="text-lg tracking-widest mb-3">REALIDAD VIRTUAL</h4>
+                    <p class="text-sm text-gray-500">Experiencias inmersivas 360° para tours virtuales interactivos.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="p-6 border border-white/5 hover:border-white/20 transition duration-500">
+                    <i data-lucide="camera" class="w-8 h-8 mb-4 text-gray-300"></i>
+                    <h4 class="text-lg tracking-widest mb-3">FOTOMONTAJE</h4>
+                    <p class="text-sm text-gray-500">Integración perfecta de entornos 3D en contextos fotográficos reales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Marquee (Simplified) -->
+    <section class="py-12 bg-black border-y border-white/10 overflow-hidden">
+        <div class="flex justify-around items-center opacity-40 grayscale hover:grayscale-0 transition duration-500">
+           <!-- Placeholder for client logos, using text for now -->
+           <span class="text-xl font-serif">FOSTER + PARTNERS</span>
+           <span class="text-xl font-serif hidden md:block">ZAHA HADID</span>
+           <span class="text-xl font-serif">BIG</span>
+           <span class="text-xl font-serif hidden md:block">GENSLER</span>
+           <span class="text-xl font-serif">SOM</span>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="bg-[#050505] pt-24 pb-12 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start">
+            
+            <div class="mb-12 md:mb-0 reveal">
+                <h2 class="text-5xl md:text-7xl font-light mb-8">HABLEMOS</h2>
+                <a href="mailto:info@limite.com" class="text-xl md:text-3xl text-gray-400 hover:text-white transition border-b border-gray-700 hover:border-white pb-2">
+                    info@limite-studio.com
+                </a>
+                <p class="mt-8 text-gray-500 max-w-xs">
+                    Av. Vitacura 2939, Piso 10<br>
+                    Santiago, Chile
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-4 text-right reveal">
+                <a href="#" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">INSTAGRAM</a>
+                <a href="#" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">LINKEDIN</a>
+                <a href="#" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">BEHANCE</a>
+                <a href="#" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">VIMEO</a>
+            </div>
+        </div>
+
+        <div class="mt-24 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 tracking-widest uppercase">
+            <div>&copy; 2024 Límite Studio. Todos los derechos reservados.</div>
+            <div class="mt-4 md:mt-0">
+                <a href="#" class="hover:text-gray-400 transition mr-4">Privacidad</a>
+                <a href="#" class="hover:text-gray-400 transition">Términos</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Loader Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    // Trigger initial reveals
+                    revealOnScroll(); 
+                }, 800);
+            }, 1000);
+        });
+
+        // Toggle Mobile Menu
+        let isMenuOpen = false;
+        const navOverlay = document.getElementById('nav-overlay');
+        const burger1 = document.getElementById('burger-1');
+        const burger2 = document.getElementById('burger-2');
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                navOverlay.classList.remove('translate-x-full');
+                burger1.classList.add('rotate-45', 'translate-y-[5px]');
+                burger2.classList.add('-rotate-45', '-translate-y-[2px]', 'w-8');
+            } else {
+                navOverlay.classList.add('translate-x-full');
+                burger1.classList.remove('rotate-45', 'translate-y-[5px]');
+                burger2.classList.remove('-rotate-45', '-translate-y-[2px]');
+                burger2.classList.remove('w-8');
+            }
+        }
+
+        // Scroll Reveal Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+
+            for (let i = 0; i < reveals.length; i++) {
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+    </script>
+</body>
+</html>
