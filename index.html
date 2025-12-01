@@ -95,8 +95,10 @@
     <section id="home" class="relative w-full h-screen overflow-hidden flex items-center justify-center">
         <!-- Background Video/Image Placeholder -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop" 
-                 alt="Modern Architecture" 
+            <!-- PORTADA: Usamos la imagen exterior (3.jpg) por ser la más impactante -->
+            <img src="imagenes/3.jpg" 
+                 onerror="this.src='https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop'"
+                 alt="Fachada Moderna" 
                  class="w-full h-full object-cover opacity-60 animate-[pulse_10s_ease-in-out_infinite]">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
         </div>
@@ -136,49 +138,57 @@
             
             <!-- Project 1 -->
             <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
-                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1600&auto=format&fit=crop" 
-                     alt="Project NYC" 
+                <!-- IMAGEN 1 (Cocina/Interior) -->
+                <img src="imagenes/1.jpg" 
+                     onerror="this.src='https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1600&auto=format&fit=crop'"
+                     alt="Interior Cocina" 
                      class="project-img w-full h-full object-cover transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
                 <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 mix-blend-difference">
                     <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">RESIDENCIAL</p>
-                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">TORRE AZURE</h3>
+                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">CASA DEL LAGO</h3>
                 </div>
             </div>
 
             <!-- Project 2 -->
             <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
-                <img src="https://images.unsplash.com/photo-1512958789358-4dac0f368d37?q=80&w=1600&auto=format&fit=crop" 
-                     alt="Project Dubai" 
+                <!-- IMAGEN 2 (Dormitorio/Estudio) -->
+                <img src="imagenes/2.jpg" 
+                     onerror="this.src='https://images.unsplash.com/photo-1512958789358-4dac0f368d37?q=80&w=1600&auto=format&fit=crop'"
+                     alt="Interior Dormitorio" 
                      class="project-img w-full h-full object-cover transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
                 <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 mix-blend-difference">
-                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">COMERCIAL</p>
-                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">THE VOYAGER</h3>
+                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">INTERIORISMO</p>
+                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">THE NORDIC</h3>
                 </div>
             </div>
 
             <!-- Project 3 -->
             <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" 
-                     alt="Project London" 
+                <!-- IMAGEN 4 (Comedor) -->
+                <img src="imagenes/4.jpg" 
+                     onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop'"
+                     alt="Interior Comedor" 
                      class="project-img w-full h-full object-cover transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
                 <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 mix-blend-difference">
-                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">INTERIORISMO</p>
+                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">COMERCIAL</p>
                     <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">LOFT 104</h3>
                 </div>
             </div>
 
             <!-- Project 4 -->
             <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
-                <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1600&auto=format&fit=crop" 
-                     alt="Project Tokyo" 
+                <!-- IMAGEN 5 (Dormitorio detalle) -->
+                <img src="imagenes/5.jpg" 
+                     onerror="this.src='https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1600&auto=format&fit=crop'"
+                     alt="Dormitorio Detalle" 
                      class="project-img w-full h-full object-cover transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
                 <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 mix-blend-difference">
-                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">CULTURAL</p>
-                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">MUSEO NARA</h3>
+                    <p class="text-xs tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">HOTELERÍA</p>
+                    <h3 class="text-3xl md:text-5xl font-light tracking-wide text-white">SUITE NARA</h3>
                 </div>
             </div>
 
@@ -233,13 +243,12 @@
 
     <!-- Clients Marquee (Simplified) -->
     <section class="py-12 bg-black border-y border-white/10 overflow-hidden">
-        <div class="flex justify-around items-center opacity-40 grayscale hover:grayscale-0 transition duration-500">
+        <div class="flex flex-wrap justify-around items-center opacity-40 grayscale hover:grayscale-0 transition duration-500 gap-8 md:gap-0 px-4">
            <!-- Placeholder for client logos, using text for now -->
-           <span class="text-xl font-serif">FOSTER + PARTNERS</span>
-           <span class="text-xl font-serif hidden md:block">ZAHA HADID</span>
-           <span class="text-xl font-serif">BIG</span>
-           <span class="text-xl font-serif hidden md:block">GENSLER</span>
-           <span class="text-xl font-serif">SOM</span>
+           <span class="text-xl font-serif text-center">SCHIELE Y WERTH</span>
+           <span class="text-xl font-serif text-center">MAGISUR</span>
+           <span class="text-xl font-serif text-center">BENDING</span>
+           <span class="text-xl font-serif text-center">COMERCIAL R&D</span>
         </div>
     </section>
 
@@ -249,20 +258,19 @@
             
             <div class="mb-12 md:mb-0 reveal">
                 <h2 class="text-5xl md:text-7xl font-light mb-8">HABLEMOS</h2>
-                <a href="mailto:info@limite.com" class="text-xl md:text-3xl text-gray-400 hover:text-white transition border-b border-gray-700 hover:border-white pb-2">
-                    info@limite-studio.com
+                <a href="mailto:arquitectochl@gmail.com" class="text-xl md:text-3xl text-gray-400 hover:text-white transition border-b border-gray-700 hover:border-white pb-2">
+                    arquitectochl@gmail.com
                 </a>
                 <p class="mt-8 text-gray-500 max-w-xs">
-                    Av. Vitacura 2939, Piso 10<br>
-                    Santiago, Chile
+                    Manuel Rodriguez 0255<br>
+                    Temuco, Chile
                 </p>
             </div>
 
             <div class="flex flex-col gap-4 text-right reveal">
-                <a href="#" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">INSTAGRAM</a>
-                <a href="#" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">LINKEDIN</a>
-                <a href="#" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">BEHANCE</a>
-                <a href="#" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">VIMEO</a>
+                <a href="https://instagram.com/crish_arq" target="_blank" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">INSTAGRAM</a>
+                <a href="https://linkedin.com/in/crishlo" target="_blank" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">LINKEDIN</a>
+                <a href="https://web.facebook.com/arquitectohoyuela" target="_blank" class="text-sm tracking-[0.2em] hover:text-gray-400 transition">FACEBOOK</a>
             </div>
         </div>
 
