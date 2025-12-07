@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -58,6 +58,7 @@
             justify-content: center;
             align-items: center;
             transition: opacity 0.8s ease-out;
+            pointer-events: none; /* Permite scroll si falla el ocultamiento */
         }
     </style>
 </head>
@@ -95,12 +96,14 @@
     <section id="home" class="relative w-full h-screen overflow-hidden flex items-center justify-center">
         <!-- Background Video/Image Placeholder -->
         <div class="absolute inset-0 z-0">
-            <!-- CAMBIO: Video de fondo en lugar de imagen fija -->
-            <!-- autoplay: se reproduce solo / muted: sin sonido (obligatorio para autoplay) / loop: bucle infinito -->
-            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-60">
+            <!-- 
+               NOTA: Se agregó 'poster' con una imagen online para que se vea algo si el video falla (como en la vista previa).
+               Cuando tengas tu video local, este poster se ocultará al reproducirse.
+            -->
+            <video autoplay muted loop playsinline 
+                   poster="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop"
+                   class="w-full h-full object-cover opacity-60">
                 <source src="Muestra_como_un_202512071240.mp4" type="video/mp4">
-                <!-- Fallback a imagen por si el video no carga -->
-                <img src="3.jpg" alt="Fachada Moderna" class="w-full h-full object-cover">
             </video>
             
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
@@ -141,7 +144,6 @@
             
             <!-- Project 1 -->
             <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
-                <!-- CAMBIO: Se quitó 'imagenes/' de la ruta -->
                 <img src="1.jpg" 
                      onerror="this.src='https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1600&auto=format&fit=crop'"
                      alt="Interior Cocina" 
@@ -155,7 +157,6 @@
 
             <!-- Project 2 -->
             <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
-                <!-- CAMBIO: Se quitó 'imagenes/' de la ruta -->
                 <img src="2.jpg" 
                      onerror="this.src='https://images.unsplash.com/photo-1512958789358-4dac0f368d37?q=80&w=1600&auto=format&fit=crop'"
                      alt="Interior Dormitorio" 
@@ -169,7 +170,6 @@
 
             <!-- Project 3 -->
             <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
-                <!-- CAMBIO: Se quitó 'imagenes/' de la ruta -->
                 <img src="4.jpg" 
                      onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop'"
                      alt="Interior Comedor" 
@@ -183,7 +183,6 @@
 
             <!-- Project 4 -->
             <div class="relative group h-[60vh] md:h-[80vh] overflow-hidden cursor-pointer project-card reveal">
-                <!-- CAMBIO: Se quitó 'imagenes/' de la ruta -->
                 <img src="5.jpg" 
                      onerror="this.src='https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1600&auto=format&fit=crop'"
                      alt="Dormitorio Detalle" 
@@ -293,14 +292,21 @@
         // Loader Logic
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
-            setTimeout(() => {
+            
+            // Función para ocultar el loader
+            const hideLoader = () => {
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
-                    // Trigger initial reveals
                     revealOnScroll(); 
                 }, 800);
-            }, 1000);
+            };
+
+            // Intentar ocultar normalmente cuando cargue
+            setTimeout(hideLoader, 1000);
+            
+            // SEGURIDAD: Si por alguna razón falla (videos rotos, etc), forzar ocultar a los 3 seg
+            setTimeout(hideLoader, 3000);
         });
 
         // Toggle Mobile Menu
