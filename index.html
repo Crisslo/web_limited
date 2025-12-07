@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -95,11 +95,14 @@
     <section id="home" class="relative w-full h-screen overflow-hidden flex items-center justify-center">
         <!-- Background Video/Image Placeholder -->
         <div class="absolute inset-0 z-0">
-            <!-- CAMBIO: Se quitó 'imagenes/' de la ruta -->
-            <img src="3.jpg" 
-                 onerror="this.src='https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop'"
-                 alt="Fachada Moderna" 
-                 class="w-full h-full object-cover opacity-60 animate-[pulse_10s_ease-in-out_infinite]">
+            <!-- CAMBIO: Video de fondo en lugar de imagen fija -->
+            <!-- autoplay: se reproduce solo / muted: sin sonido (obligatorio para autoplay) / loop: bucle infinito -->
+            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-60">
+                <source src="Muestra_como_un_202512071240.mp4" type="video/mp4">
+                <!-- Fallback a imagen por si el video no carga -->
+                <img src="3.jpg" alt="Fachada Moderna" class="w-full h-full object-cover">
+            </video>
+            
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
         </div>
 
