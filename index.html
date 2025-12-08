@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
         body {
@@ -97,8 +97,7 @@
         <!-- Background Video/Image Placeholder -->
         <div class="absolute inset-0 z-0">
             <!-- 
-               NOTA: Se agregó 'poster' con una imagen online para que se vea algo si el video falla (como en la vista previa).
-               Cuando tengas tu video local, este poster se ocultará al reproducirse.
+               Video de fondo con poster de carga 
             -->
             <video autoplay muted loop playsinline 
                    poster="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop"
@@ -209,9 +208,27 @@
             <div class="md:col-span-4 reveal">
                 <h2 class="text-4xl font-light mb-6">EL ESTUDIO</h2>
                 <div class="w-12 h-[1px] bg-white mb-6"></div>
-                <p class="text-sm leading-7 text-gray-400">
+                <p class="text-sm leading-7 text-gray-400 mb-8">
                     Fundado en 2014, HOYUELA ha establecido una reputación internacional por su excelencia en imágenes generadas por computadora (CGI). Trabajamos con los arquitectos y desarrolladores más prestigiosos del mundo.
                 </p>
+
+                <!-- NUEVA SECCIÓN DE DIRECTOR CREATIVO CON FOTO -->
+                <div class="pt-8 border-t border-white/10 mt-8 flex flex-col sm:flex-row gap-8 items-start">
+                    <!-- Foto de Perfil -->
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-sm filter grayscale hover:grayscale-0 transition duration-500 shadow-2xl">
+                        <img src="foto perfil.jpg" alt="Cristian Hoyuela" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
+                    </div>
+                    
+                    <!-- Información -->
+                    <div>
+                        <p class="text-xs tracking-[0.2em] text-gray-500 mb-2 uppercase">Dirección Creativa</p>
+                        <h3 class="text-2xl text-white font-light tracking-wide">Cristian Hoyuela</h3>
+                        <p class="text-lg text-gray-400 font-serif italic mt-1">Arquitecto</p>
+                        <p class="text-xs text-gray-500 mt-4 leading-relaxed max-w-sm">
+                            Visión arquitectónica aplicada a la imagen digital. Profesionalismo y experiencia técnica al servicio del diseño.
+                        </p>
+                    </div>
+                </div>
             </div>
             
             <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8 reveal">
