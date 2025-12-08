@@ -96,7 +96,9 @@
     <section id="home" class="relative w-full h-screen overflow-hidden flex items-center justify-center">
         <!-- Background Video/Image Placeholder -->
         <div class="absolute inset-0 z-0">
-            <!-- Video de fondo con poster de carga -->
+            <!-- 
+               Video de fondo con poster de carga 
+            -->
             <video autoplay muted loop playsinline 
                    poster="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop"
                    class="w-full h-full object-cover opacity-60">
@@ -202,22 +204,24 @@
 
     <!-- NUEVA SECCIÓN: Video Plantas 2D a 3D (Desarrollo Inmobiliario) -->
     <section class="w-full bg-[#050505] py-0 relative border-y border-white/5">
+        
+        <!-- Franja de texto SUPERIOR (fuera del video) -->
+        <div class="py-16 text-center px-4 bg-[#050505]">
+             <div class="reveal">
+                 <p class="text-xs md:text-sm tracking-[0.4em] text-gray-200 uppercase mb-4">SOLUCIONES INMOBILIARIAS</p>
+                 <h3 class="text-3xl md:text-6xl font-light tracking-tight text-white mb-2">
+                    PLANTAS <span class="font-serif italic text-gray-300">EVOLUTIVAS</span>
+                 </h3>
+                 <p class="text-xs text-gray-400 mt-4 tracking-widest uppercase">De la abstracción técnica al volumen real</p>
+             </div>
+        </div>
+
+        <!-- Contenedor del Video -->
         <div class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden">
             <video autoplay muted loop playsinline 
                    class="w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition duration-1000">
                 <source src="Genera_un_video_202512071203.mp4" type="video/mp4">
             </video>
-            
-            <!-- Texto Superpuesto -->
-            <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center text-center px-4">
-                 <div class="reveal">
-                     <p class="text-xs md:text-sm tracking-[0.4em] text-gray-200 uppercase mb-4">SOLUCIONES INMOBILIARIAS</p>
-                     <h3 class="text-3xl md:text-6xl font-light tracking-tight text-white mb-2">
-                        PLANTAS <span class="font-serif italic text-gray-300">EVOLUTIVAS</span>
-                     </h3>
-                     <p class="text-xs text-gray-400 mt-4 tracking-widest uppercase">De la abstracción técnica al volumen real</p>
-                 </div>
-            </div>
         </div>
     </section>
 
