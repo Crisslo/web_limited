@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -61,6 +61,7 @@
             transform: scale(1.05);
         }
         
+        /* Loader con pointer-events-none para asegurar que no bloquee clicks si falla la opacidad */
         .loader {
             position: fixed;
             inset: 0;
@@ -70,7 +71,6 @@
             justify-content: center;
             align-items: center;
             transition: opacity 0.8s ease-out;
-            pointer-events: none;
         }
 
         /* Estilos específicos para el Slider Antes/Después */
@@ -344,36 +344,46 @@
     <script>
         lucide.createIcons();
 
-        // Loader y Animaciones
+        // -----------------------------------------------------
+        // LÓGICA DE CARGA OPTIMIZADA (Para evitar que se congele)
+        // -----------------------------------------------------
         window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            const hideLoader = () => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    revealOnScroll(); 
-                }, 800);
-            };
-            setTimeout(hideLoader, 1000);
-            setTimeout(hideLoader, 3000);
-            
-            // Ajustar imagen interna del slider al cargar
+            hideLoader();
             adjustSliderImageWidth();
         });
 
+        // Este código se ejecuta si o si, incluso si falla la carga
+        const loader = document.getElementById('loader');
+        
+        const hideLoader = () => {
+            if (!loader) return;
+            // Evitar que se ejecute múltiples veces
+            if (loader.classList.contains('hidden-flag')) return;
+            loader.classList.add('hidden-flag');
+
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                revealOnScroll(); 
+            }, 800);
+        };
+
+        // Forzar ocultamiento a los 2.5s aunque las imágenes fallen
+        setTimeout(hideLoader, 2500);
+
+        // -----------------------------------------------------
+        // SLIDER ANTES / DESPUÉS
+        // -----------------------------------------------------
         window.addEventListener('resize', adjustSliderImageWidth);
 
         function adjustSliderImageWidth() {
             const container = document.getElementById('comparison-container');
             const innerImg = document.getElementById('img-2d-inner');
             if(container && innerImg) {
-                // Forzar que la imagen interna tenga el ancho exacto del contenedor padre
-                // para que al cortar el div overlay, la imagen no se deforme.
                 innerImg.style.width = container.offsetWidth + 'px';
             }
         }
 
-        // Lógica del Slider Antes/Después
         const container = document.getElementById('comparison-container');
         const overlay = document.getElementById('overlay-2d');
         const handle = document.getElementById('slider-handle');
@@ -385,44 +395,36 @@
                 const rect = container.getBoundingClientRect();
                 let position = x - rect.left;
                 
-                // Límites
                 if (position < 0) position = 0;
                 if (position > rect.width) position = rect.width;
                 
-                // Porcentaje
                 const percentage = (position / rect.width) * 100;
                 
                 overlay.style.width = `${percentage}%`;
                 handle.style.left = `${percentage}%`;
             };
 
-            // Mouse Events
+            // Mouse
             container.addEventListener('mousedown', () => isDragging = true);
             window.addEventListener('mouseup', () => isDragging = false);
-            
             container.addEventListener('mousemove', (e) => {
                 if (!isDragging) return;
                 moveSlider(e.clientX);
             });
-            
-            // Click para mover instantáneamente
-            container.addEventListener('click', (e) => {
-                moveSlider(e.clientX);
-            });
+            container.addEventListener('click', (e) => moveSlider(e.clientX));
 
-            // Touch Events (Móvil)
+            // Touch (Móvil)
             container.addEventListener('touchstart', () => isDragging = true);
             window.addEventListener('touchend', () => isDragging = false);
-            
             container.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
-                // Prevenir scroll mientras se mueve el slider
-                // e.preventDefault(); 
                 moveSlider(e.touches[0].clientX);
             });
         }
 
-        // Mobile Menu
+        // -----------------------------------------------------
+        // MENU MÓVIL
+        // -----------------------------------------------------
         let isMenuOpen = false;
         const navOverlay = document.getElementById('nav-overlay');
         const burger1 = document.getElementById('burger-1');
@@ -442,7 +444,9 @@
             }
         }
 
-        // Reveal on Scroll
+        // -----------------------------------------------------
+        // REVEAL ON SCROLL
+        // -----------------------------------------------------
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.reveal');
             const windowHeight = window.innerHeight;
