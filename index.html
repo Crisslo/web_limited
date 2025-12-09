@@ -77,6 +77,20 @@
         #comparison-container {
             cursor: ew-resize; /* Cursor de redimensionar horizontal */
         }
+
+        /* Animación para los Hotspots */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.33); opacity: 1; }
+            80%, 100% { transform: scale(2); opacity: 0; }
+        }
+        .hotspot-ring::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            border: 1px solid white;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -92,6 +106,7 @@
             <li><a href="#home" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">INICIO</a></li>
             <li><a href="#work" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">TRABAJOS</a></li>
             <li><a href="#plantas" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">PLANTAS EVOLUTIVAS</a></li>
+            <li><a href="#recorridos" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">RECORRIDOS</a></li>
             <li><a href="#studio" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">ESTUDIO</a></li>
             <li><a href="#contact" class="nav-link text-3xl md:text-5xl font-light hover:text-gray-400 transition" onclick="toggleMenu()">CONTACTO</a></li>
         </ul>
@@ -248,10 +263,8 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 2: Fachadas Edificios (Nueva) -->
+    <!-- SECCIÓN 2: Fachadas Edificios -->
     <section class="w-full bg-[#050505] py-0 relative border-b border-white/5">
-        
-        <!-- Franja de texto SUPERIOR -->
         <div class="py-16 text-center px-4 bg-[#050505]">
              <div class="reveal">
                  <p class="text-xs md:text-sm tracking-[0.4em] text-gray-200 uppercase mb-4">GRAN ESCALA</p>
@@ -261,17 +274,82 @@
                  <p class="text-xs text-gray-400 mt-4 tracking-widest uppercase">Impacto visual y materialidad para proyectos en altura</p>
              </div>
         </div>
-
-        <!-- Contenedor de Imagen Estática -->
         <div class="relative w-full h-[60vh] md:h-[90vh] bg-[#050505] reveal">
-            <!-- IMAGEN FACHADA -->
-            <!-- Se usa object-contain para asegurar que el edificio se vea completo -->
             <img src="fachada edificio.jpg" 
                  onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop'"
                  class="w-full h-full object-contain"
                  alt="Fachada Edificio">
         </div>
     </section>
+
+    <!-- NUEVA SECCIÓN: RECORRIDOS VIRTUALES (HOTSPOTS) -->
+    <section id="recorridos" class="w-full bg-[#050505] py-0 relative border-b border-white/5">
+        
+        <!-- Header de Sección -->
+        <div class="py-16 text-center px-4 bg-[#050505]">
+             <div class="reveal">
+                 <p class="text-xs md:text-sm tracking-[0.4em] text-gray-200 uppercase mb-4">EXPERIENCIA INMERSIVA</p>
+                 <h3 class="text-3xl md:text-6xl font-light tracking-tight text-white mb-2">
+                    RECORRIDOS <span class="font-serif italic text-gray-300">VIRTUALES</span>
+                 </h3>
+                 <p class="text-xs text-gray-400 mt-4 tracking-widest uppercase">Explora cada espacio interactuando con la planta</p>
+             </div>
+        </div>
+
+        <!-- Contenedor Interactivo -->
+        <div class="relative w-full h-[60vh] md:h-[90vh] bg-[#050505] reveal overflow-hidden">
+            
+            <!-- Planta Base (misma que la 3D) -->
+            <img src="planta_3d.jpg" 
+                 onerror="this.src='https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2000&auto=format&fit=crop'"
+                 class="w-full h-full object-contain"
+                 alt="Planta Interactiva">
+
+            <!-- HOTSPOTS (Puntos Calientes) -->
+            <!-- NOTA: Ajusta 'top' y 'left' (%) según la ubicación real en tu imagen 'planta_3d.jpg' -->
+            
+            <!-- 1. Cocina (Kitchen) -->
+            <button onclick="openModal('1.jpg', 'Cocina Equipada')" 
+                    class="absolute top-[30%] left-[25%] group z-20 focus:outline-none hotspot-ring">
+                <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Cocina</div>
+            </button>
+
+            <!-- 2. Living Comedor (Dining/Living) -->
+            <button onclick="openModal('4.jpg', 'Living Comedor')" 
+                    class="absolute top-[60%] left-[60%] group z-20 focus:outline-none hotspot-ring">
+                <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Living Comedor</div>
+            </button>
+
+            <!-- 3. Dormitorio Principal (Master Bedroom) -->
+            <button onclick="openModal('2.jpg', 'Dormitorio Principal')" 
+                    class="absolute top-[30%] left-[65%] group z-20 focus:outline-none hotspot-ring">
+                <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Dormitorio</div>
+            </button>
+
+            <!-- 4. Baño Principal (Master Bath) -->
+            <!-- Usando imagen placeholder de baño ya que no hay 'baño.jpg' específica -->
+            <button onclick="openModal('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=1600&auto=format&fit=crop', 'Baño Principal')" 
+                    class="absolute top-[45%] left-[45%] group z-20 focus:outline-none hotspot-ring">
+                <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Baño</div>
+            </button>
+
+        </div>
+    </section>
+
+    <!-- MODAL (Popup de imagen) -->
+    <div id="imageModal" class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-gray-300 z-50">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <div class="relative max-w-7xl w-full max-h-[90vh] flex flex-col items-center">
+            <img id="modalImage" src="" alt="Vista Detallada" class="max-w-full max-h-[85vh] object-contain shadow-2xl border border-white/10">
+            <p id="modalCaption" class="text-white tracking-[0.3em] mt-4 text-sm uppercase font-light"></p>
+        </div>
+    </div>
 
     <!-- Studio Section -->
     <section id="studio" class="py-24 px-6 md:px-12 bg-[#080808] text-gray-200">
@@ -432,6 +510,38 @@
                 moveSlider(e.touches[0].clientX);
             });
         }
+
+        // -----------------------------------------------------
+        // MODAL LOGIC (Recorridos Virtuales)
+        // -----------------------------------------------------
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+
+        function openModal(imageSrc, caption) {
+            modalImage.src = imageSrc;
+            modalCaption.innerText = caption;
+            imageModal.classList.remove('hidden');
+            // Small delay to allow transition
+            setTimeout(() => {
+                imageModal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeModal() {
+            imageModal.classList.add('opacity-0');
+            setTimeout(() => {
+                imageModal.classList.add('hidden');
+                modalImage.src = ''; // Clear source
+            }, 300);
+        }
+
+        // Close on clicking outside image
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                closeModal();
+            }
+        });
 
         // -----------------------------------------------------
         // MENU MÓVIL
