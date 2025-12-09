@@ -78,7 +78,7 @@
             cursor: ew-resize; /* Cursor de redimensionar horizontal */
         }
 
-        /* Animación para los Hotspots */
+        /* Animación para los Hotspots - AHORA EN ROJO */
         @keyframes pulse-ring {
             0% { transform: scale(0.33); opacity: 1; }
             80%, 100% { transform: scale(2); opacity: 0; }
@@ -88,7 +88,7 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 50%;
-            border: 1px solid white;
+            border: 1px solid #dc2626; /* Color Rojo */
             animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
         }
     </style>
@@ -307,18 +307,18 @@
 
             <!-- HOTSPOTS (Puntos Calientes) -->
             
-            <!-- 1. Dormitorio Principal (Ajustado a 20%) -->
+            <!-- 1. Dormitorio Principal (Ajustado a 35% en vez de 235%, con color ROJO) -->
             <button onclick="openModal('2.jpg', 'Dormitorio Principal')" 
-                    class="absolute top-[30%] left-[20%] group z-20 focus:outline-none hotspot-ring">
-                <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
+                    class="absolute top-[30%] left-[35%] group z-20 focus:outline-none hotspot-ring">
+                <div class="w-4 h-4 bg-red-600 rounded-full shadow-[0_0_15px_rgba(220,38,38,0.8)] group-hover:scale-125 transition duration-300"></div>
                 <!-- Tooltip -->
                 <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Dormitorio</div>
             </button>
 
-            <!-- 2. Living Comedor (Ajustado a 60%) -->
+            <!-- 2. Living Comedor (Ajustado a 50%, con color ROJO) -->
             <button onclick="openModal('4.jpg', 'Living Comedor')" 
-                    class="absolute top-[60%] left-[60%] group z-20 focus:outline-none hotspot-ring">
-                <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
+                    class="absolute top-[60%] left-[50%] group z-20 focus:outline-none hotspot-ring">
+                <div class="w-4 h-4 bg-red-600 rounded-full shadow-[0_0_15px_rgba(220,38,38,0.8)] group-hover:scale-125 transition duration-300"></div>
                 <!-- Tooltip -->
                 <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Living Comedor</div>
             </button>
