@@ -306,35 +306,21 @@
                  alt="Planta Interactiva">
 
             <!-- HOTSPOTS (Puntos Calientes) -->
-            <!-- NOTA: Ajusta 'top' y 'left' (%) según la ubicación real en tu imagen 'planta_3d.jpg' -->
             
-            <!-- 1. Cocina (Kitchen) - Movido -20% (De 25% a 5%) -->
-            <button onclick="openModal('1.jpg', 'Cocina Equipada')" 
+            <!-- 1. Dormitorio Principal (Borde Izquierdo) -->
+            <button onclick="openModal('2.jpg', 'Dormitorio Principal')" 
                     class="absolute top-[30%] left-[5%] group z-20 focus:outline-none hotspot-ring">
                 <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
-                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Cocina</div>
+                <!-- Tooltip a la derecha para no salirse de la pantalla -->
+                <div class="absolute -bottom-8 left-0 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Dormitorio</div>
             </button>
 
-            <!-- 2. Living Comedor (Dining/Living) - Movido -20% (De 60% a 40%) -->
+            <!-- 2. Living Comedor (Borde Derecho) -->
             <button onclick="openModal('4.jpg', 'Living Comedor')" 
-                    class="absolute top-[60%] left-[40%] group z-20 focus:outline-none hotspot-ring">
+                    class="absolute top-[60%] left-[85%] group z-20 focus:outline-none hotspot-ring">
                 <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
-                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Living Comedor</div>
-            </button>
-
-            <!-- 3. Dormitorio Principal (Master Bedroom) - Movido -20% (De 65% a 45%) -->
-            <button onclick="openModal('2.jpg', 'Dormitorio Principal')" 
-                    class="absolute top-[30%] left-[45%] group z-20 focus:outline-none hotspot-ring">
-                <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
-                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Dormitorio</div>
-            </button>
-
-            <!-- 4. Baño Principal (Master Bath) -->
-            <!-- Usando imagen placeholder de baño ya que no hay 'baño.jpg' específica -->
-            <button onclick="openModal('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=1600&auto=format&fit=crop', 'Baño Principal')" 
-                    class="absolute top-[45%] left-[45%] group z-20 focus:outline-none hotspot-ring">
-                <div class="w-4 h-4 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)] group-hover:scale-125 transition duration-300"></div>
-                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Baño</div>
+                <!-- Tooltip a la izquierda para no salirse de la pantalla -->
+                <div class="absolute -bottom-8 right-0 bg-black/80 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap tracking-widest uppercase border border-white/20">Living Comedor</div>
             </button>
 
         </div>
