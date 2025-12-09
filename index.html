@@ -212,13 +212,13 @@
         </div>
 
         <!-- Contenedor del Slider Antes/Después -->
-        <div id="comparison-container" class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden group select-none">
+        <div id="comparison-container" class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden group select-none bg-[#050505]">
             
             <!-- IMAGEN 3D (BASE - RESULTADO FINAL) -->
-            <!-- Recuerda subir tu imagen como 'planta_3d.jpg' -->
+            <!-- CAMBIO: Se usa 'object-contain' para asegurar que se vea completa, dejando espacio negro si es necesario -->
             <img src="planta_3d.jpg" 
                  onerror="this.src='https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2000&auto=format&fit=crop'"
-                 class="absolute inset-0 w-full h-full object-cover" 
+                 class="absolute inset-0 w-full h-full object-contain" 
                  alt="Planta 3D">
                  
             <!-- Etiqueta 3D -->
@@ -227,17 +227,16 @@
             </div>
             
             <!-- IMAGEN 2D (SUPERIOR - ESTADO INICIAL) -->
-            <!-- Recuerda subir tu imagen como 'planta_2d.jpg' -->
-            <div id="overlay-2d" class="absolute inset-0 w-[50%] overflow-hidden h-full border-r border-white/50 z-10 bg-[#050505]">
-                 <!-- La imagen interna debe tener w-screen para mantenerse fija mientras el contenedor se corta -->
+            <div id="overlay-2d" class="absolute inset-0 w-[50%] overflow-hidden h-full border-r border-white/50 z-10">
+                 <!-- CAMBIO: Se usa 'object-contain' y se forza el tamaño para coincidir con la base -->
                  <img src="planta_2d.jpg" 
                       onerror="this.src='https://images.unsplash.com/photo-1599394622830-e838e4a93883?q=80&w=2000&auto=format&fit=crop'"
                       id="img-2d-inner"
-                      class="absolute top-0 left-0 max-w-none h-full object-cover opacity-90" 
+                      class="absolute top-0 left-0 max-w-none h-full object-contain opacity-90 bg-[#050505]" 
                       alt="Planta 2D">
             </div>
 
-            <!-- Etiqueta 2D (Dentro del overlay para que se oculte al deslizar) -->
+            <!-- Etiqueta 2D -->
             <div class="absolute top-8 left-8 bg-white/90 px-4 py-2 text-xs tracking-widest text-black z-20 pointer-events-none mix-blend-screen">
                 2D PLANO
             </div>
@@ -380,6 +379,7 @@
             const container = document.getElementById('comparison-container');
             const innerImg = document.getElementById('img-2d-inner');
             if(container && innerImg) {
+                // Forzar que la imagen interna tenga el ancho exacto del contenedor padre
                 innerImg.style.width = container.offsetWidth + 'px';
             }
         }
